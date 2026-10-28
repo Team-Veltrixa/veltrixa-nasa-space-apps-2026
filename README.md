@@ -12,6 +12,7 @@ Our goal is to make complex microgravity combustion data easier to understand. W
 **✅ Implemented Features:**
 * GitHub repository and team organization setup.
 * Initial project architecture planning.
+* Learned how to use GitHub branches safely!
 
 **🚧 Planned Components (In Progress):**
 * Interactive data visualization charts for combustion metrics.
