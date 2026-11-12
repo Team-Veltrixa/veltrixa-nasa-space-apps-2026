@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VELTRIXA // Artemis Lunar Research Systems</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=stardom@400&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind must load before script.js -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="script.js"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-cosmos-950 text-violet-100 font-mono tracking-wide antialiased selection:bg-purple-500/35 selection:text-white">
+  <!-- Space background -->
+  <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none bg-cosmos-950">
+    <canvas id="space-earth-canvas" class="absolute inset-0 w-full h-full"></canvas>
+
+    <video
+      id="space-bg-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+    >
+      <source
+        src="assets/VELTRIXA video.mp4"
+        type="video/mp4"
+      />
+    </video>
+
+    <div class="cosmos-video-tint absolute inset-0"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-purple-400/20 bg-cosmos-950/75 backdrop-blur-xl">
+    <div class="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 py-4 flex flex-wrap items-center justify-between gap-8">
+      <a href="#top-hero" class="flex items-center gap-4 group">
+        <img
+          src="./assets/veltrixa-logo.jpg"
+          alt="VELTRIXA Artemis Lunar Research Systems Logo"
+          class="h-12 sm:h-14 w-auto object-contain logo-screen-blend transition-transform duration-300 group-hover:scale-105"
+        />
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-xs text-violet-200/80">
+        <a href="#morph-section" class="hover:text-purple-300 transition">01. FLAME MORPH</a>
+        <a href="#environment-control" class="hover:text-purple-300 transition">02. TELEMETRY</a>
+        <a href="#panel-research" class="hover:text-purple-300 transition">03. RESEARCH</a>
+        <a href="#panel-assistant" class="hover:text-purple-300 transition">04. AI RECEIPTS</a>
+        <a href="#security-tracker" class="hover:text-purple-300 transition">05. SECURITY</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <span
+          id="video-feed-badge"
+          class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-purple-400/30 bg-purple-950/40 text-[11px] text-purple-200"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping"></span>
+          <span>ORBITAL FEED // LIVE</span>
+        </span>
+
+        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-lg border border-emerald-400/40 bg-emerald-950/30 text-xs text-emerald-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>READ-ONLY</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <!-- Hero -->
+    <section id="top-hero" class="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 pt-20 pb-28 lg:pt-28 lg:pb-36">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-8">
+          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-lg border border-purple-400/35 bg-cosmos-900/70 backdrop-blur-md text-xs text-purple-200">
+            <span class="text-cyan-300">[LOG_001]</span>
+            <span>MICROGRAVITY COMBUSTION &amp; SPACECRAFT FIRE SAFETY SIMULATOR</span>
+          </div>
+
+          <h1 class="font-stardom text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-wider">
+            FREEFALL<span class="text-purple-400">.</span>
+            <span class="block text-2xl sm:text-3xl lg:text-4xl text-purple-200/90 mt-5">
+              ARTEMIS LUNAR HABITAT CONSOLE
+            </span>
+          </h1>
+
+          <p class="text-sm sm:text-base text-violet-100/85 leading-loose max-w-2xl">
+            Terrestrial fire safety assumptions fail off-world. Without strong buoyant convection, flames collapse into
+            symmetric glowing spheres, sustain invisible low-temperature reactions, and accelerate dramatically in
+            oxygen-enriched exploration cabins. This terminal translates verified NASA BASS, ACME, and FLEX findings
+            into an interactive astronaut training console.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-8 pt-2">
+            <a
+              href="#environment-control"
+              class="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-500 to-violet-500 hover:from-purple-400 hover:to-violet-400 text-white text-xs font-bold uppercase tracking-widest shadow-[0_0_32px_rgba(168,85,247,0.42)] transition"
+            >
+              [ LAUNCH SIMULATOR ]
+            </a>
+
+            <a
+              href="#morph-section"
+              class="px-8 py-4 rounded-xl border border-purple-300/35 hover:border-cyan-300/60 bg-cosmos-900/60 hover:bg-purple-900/40 text-violet-100 text-xs uppercase tracking-widest backdrop-blur-md transition"
+            >
+              [ SCROLL FLAME MORPH &darr; ]
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="terminal-panel rounded-2xl p-8 sm:p-10 space-y-8">
+            <span class="corner-tick corner-tick-tl"></span>
+            <span class="corner-tick corner-tick-tr"></span>
+            <span class="corner-tick corner-tick-bl"></span>
+            <span class="corner-tick corner-tick-br"></span>
+
+            <div class="flex flex-col items-center border-b border-purple-400/20 pb-6">
+              <img
+                src="./assets/veltrixa-logo.jpg"
+                alt="VELTRIXA Artemis Lunar Research Systems Crest"
+                class="w-full max-w-[330px] h-auto object-contain logo-screen-blend"
+              />
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm leading-loose text-violet-100/85">
+              <div class="flex justify-between gap-4 border-b border-purple-400/15 pb-3">
+                <span class="text-purple-300/75">PRIMARY FACILITY</span>
+                <span class="text-white text-right">ARTEMIS BASELINE SIM</span>
+              </div>
+
+              <div class="flex justify-between gap-4 border-b border-purple-400/15 pb-3">
+                <span class="text-purple-300/75">VERIFIED ARCHIVES</span>
+                <span class="text-cyan-300 text-right">NASA BASS / ACME / FLEX</span>
+              </div>
+
+              <div class="flex justify-between gap-4 border-b border-purple-400/15 pb-3">
+                <span class="text-purple-300/75">LUNAR GRAVITY REF</span>
+                <span class="text-purple-200 text-right">0.165408 G</span>
+              </div>
+
+              <div class="flex justify-between gap-4">
+                <span class="text-purple-300/75">MISSION STATUS</span>
+                <span class="text-emerald-300 text-right">STANDBY // NOMINAL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scroll flame morph -->
+    <section id="morph-section" class="relative min-h-[165vh] border-y border-purple-400/20">
+      <div class="sticky top-20 h-[calc(100vh-5rem)] max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 py-10 flex flex-col justify-between gap-8">
+        <div class="flex flex-wrap items-center justify-between gap-8">
+          <div class="space-y-2">
+            <span id="morph-stage-tag" class="block text-xs text-purple-300">
+              [SCROLL_STAGE_01] // EARTH FLAME BUOYANCY BASELINE
+            </span>
+
+            <h2 class="font-stardom text-2xl sm:text-3xl text-white">
+              GRAVITY TRANSITION OPTICAL CHAMBER
+            </h2>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-8 text-xs">
+            <div class="px-5 py-3 rounded-xl border border-purple-400/30 bg-cosmos-900/75 backdrop-blur-md">
+              <span class="text-purple-300/70 block text-[10px]">ACCELERATION VECTOR</span>
+              <span id="morph-g-value" class="text-amber-300 font-bold text-sm">0.998412 G</span>
+            </div>
+
+            <div class="px-5 py-3 rounded-xl border border-purple-400/30 bg-cosmos-900/75 backdrop-blur-md">
+              <span class="text-purple-300/70 block text-[10px]">FLAME GEOMETRY</span>
+              <span id="morph-shape-label" class="text-white font-bold text-sm">EARTH FLAME</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="terminal-panel relative flex-1 rounded-2xl flex items-center justify-center overflow-hidden p-8 sm:p-10">
+          <span class="corner-tick corner-tick-tl"></span>
+          <span class="corner-tick corner-tick-tr"></span>
+          <span class="corner-tick corner-tick-bl"></span>
+          <span class="corner-tick corner-tick-br"></span>
+
+          <span class="absolute top-6 left-8 text-[11px] text-purple-300/75 hidden sm:block">
+            [OPTICAL_CHAMBER // LIVE ORBITAL BACKDROP]
+          </span>
+
+          <span id="morph-placeholder-badge" class="absolute top-6 right-8 text-[11px] text-amber-300">
+            PLACEHOLDER: EARTH FLAME
+          </span>
+
+          <svg
+            id="morph-reticle-ring"
+            class="absolute w-[min(75vw,440px)] h-[min(75vw,440px)] text-purple-300/40 pointer-events-none"
+            viewBox="0 0 400 400"
+            fill="none"
+          >
+            <circle cx="200" cy="200" r="185" stroke="currentColor" stroke-dasharray="6 10" />
+            <circle cx="200" cy="200" r="142" stroke="#38bdf8" stroke-opacity="0.45" stroke-dasharray="48 24" />
+            <line x1="200" y1="12" x2="200" y2="38" stroke="currentColor" />
+            <line x1="200" y1="362" x2="200" y2="388" stroke="currentColor" />
+            <line x1="12" y1="200" x2="38" y2="200" stroke="currentColor" />
+            <line x1="362" y1="200" x2="388" y2="200" stroke="currentColor" />
+          </svg>
+
+          <div id="morph-scale-box" class="relative w-[min(86vw,700px)] h-[min(48vh,420px)] flex items-center justify-center will-change-transform">
+            <img
+              id="earth-flame-img"
+              src="./assets/flame-normal.png"
+              alt="Earth Flame Placeholder — 1G buoyant teardrop flame"
+              class="absolute inset-0 w-full h-full object-contain flame-optical-blend select-none"
+            />
+
+            <img
+              id="microgravity-flame-img"
+              src="./assets/flame-microgravity.png"
+              alt="Microgravity Sphere Placeholder — glowing blue spherical flame"
+              class="absolute inset-0 w-full h-full object-contain flame-optical-blend opacity-0 select-none"
+            />
+          </div>
+
+          <div
+            id="morph-caption-earth"
+            class="hidden lg:block absolute bottom-8 left-8 max-w-xs p-6 rounded-xl border border-purple-400/25 bg-cosmos-950/80 backdrop-blur-md text-xs leading-loose text-violet-100/85"
+          >
+            <span class="block text-amber-300 font-bold mb-1">[01] EARTH FLAME</span>
+            Thermal buoyancy pulls fresh oxygen inward at the base and stretches soot upward into a teardrop plume.
+          </div>
+
+          <div
+            id="morph-caption-micro"
+            class="hidden lg:block absolute bottom-8 right-8 max-w-xs p-6 rounded-xl border border-cyan-400/35 bg-cosmos-950/80 backdrop-blur-md text-xs leading-loose text-violet-100/85 opacity-0"
+          >
+            <span class="block text-cyan-300 font-bold mb-1">[02] MICROGRAVITY SPHERE</span>
+            Without buoyancy, oxygen diffuses radially from all directions, forming an isotropic glowing blue sphere.
+          </div>
+        </div>
+
+        <div class="flex items-center gap-8 text-xs text-purple-200/75">
+          <span>EARTH FLAME</span>
+
+          <div class="flex-1 h-1.5 rounded-full bg-cosmos-900/90 border border-purple-400/25 overflow-hidden">
+            <div id="morph-scrub-bar" class="h-full w-0 bg-gradient-to-r from-amber-400 via-purple-400 to-cyan-400"></div>
+          </div>
+
+          <span class="text-cyan-300">MICROGRAVITY SPHERE</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Environment controls -->
+    <section id="environment-control" class="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 pt-24 pb-12">
+      <div class="terminal-panel rounded-2xl p-8 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div class="space-y-3 max-w-xl">
+          <span class="block text-xs text-purple-300">[ENVIRONMENT_CALIBRATION]</span>
+          <h2 class="font-stardom text-2xl sm:text-3xl text-white">SELECT SIMULATION ENVIRONMENT</h2>
+
+          <p class="text-xs sm:text-sm text-violet-200/80 leading-loose">
+            Toggle active cabin atmospheric composition and gravitational profile to update live raw sensor telemetry
+            across the terminal.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+          <button
+            type="button"
+            data-env="earth-air"
+            class="env-toggle-btn px-6 py-4 rounded-xl border border-purple-400/25 bg-cosmos-950/60 hover:border-purple-300 text-xs sm:text-sm font-bold text-violet-200 transition cursor-pointer"
+          >
+            1G Earth Air
+          </button>
+
+          <button
+            type="button"
+            data-env="artemis-moon"
+            class="env-toggle-btn px-6 py-4 rounded-xl border border-purple-400 bg-purple-500/25 text-xs sm:text-sm font-bold text-white shadow-[0_0_24px_rgba(168,85,247,0.3)] transition cursor-pointer"
+          >
+            Artemis Moon Base
+          </button>
+
+          <button
+            type="button"
+            data-env="pure-oxygen"
+            class="env-toggle-btn px-6 py-4 rounded-xl border border-purple-400/25 bg-cosmos-950/60 hover:border-rose-400/70 text-xs sm:text-sm font-bold text-violet-200 transition cursor-pointer"
+          >
+            100% Pure Oxygen
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard-panels" class="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 pb-20">
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 lg:gap-12 items-stretch">
+        <!-- Telemetry -->
+        <article id="panel-telemetry" class="terminal-panel rounded-2xl p-8 sm:p-10 flex flex-col justify-between gap-8">
+          <span class="corner-tick corner-tick-tl"></span>
+          <span class="corner-tick corner-tick-tr"></span>
+          <span class="corner-tick corner-tick-bl"></span>
+          <span class="corner-tick corner-tick-br"></span>
+          <div class="panel-scan-line"></div>
+
+          <div class="space-y-8">
+            <div class="flex flex-wrap items-start justify-between gap-4 border-b border-purple-400/20 pb-6">
+              <div class="space-y-1.5">
+                <span class="block text-[11px] text-purple-300">[SYS_01]</span>
+                <h3 class="font-stardom text-xl text-white">ALARM STATUS &amp; TELEMETRY</h3>
+              </div>
+
+              <span
+                id="alarm-badge"
+                class="px-3 py-1.5 rounded border border-purple-400/45 bg-purple-950/50 text-[11px] font-bold text-purple-200"
+              >
+                CAUTION // ELEVATED O2
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
+              <div class="p-6 rounded-xl border border-purple-400/20 bg-cosmos-950/65 flex flex-col items-center justify-center gap-3">
+                <span class="text-[11px] text-purple-200/75">SAFETY MARGIN DIAL</span>
+
+                <svg class="w-36" viewBox="0 0 140 84">
+                  <path
+                    d="M 18 70 A 52 52 0 0 1 122 70"
+                    fill="none"
+                    stroke="#2e1f5e"
+                    stroke-width="8"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    id="safety-dial-arc"
+                    d="M 18 70 A 52 52 0 0 1 122 70"
+                    fill="none"
+                    stroke="url(#dialGrad)"
+                    stroke-width="8"
+                    stroke-linecap="round"
+                    stroke-dasharray="163.4"
+                    stroke-dashoffset="95"
+                  />
+
+                  <defs>
+                    <linearGradient id="dialGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#f43f5e" />
+                      <stop offset="50%" stop-color="#c084fc" />
+                      <stop offset="100%" stop-color="#38bdf8" />
+                    </linearGradient>
+                  </defs>
+
+                  <g id="safety-dial-needle" transform="rotate(-15 70 70)">
+                    <line
+                      x1="70"
+                      y1="70"
+                      x2="70"
+                      y2="26"
+                      stroke="#f5f3ff"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                    />
+                  </g>
+
+                  <circle cx="70" cy="70" r="4.5" fill="#c084fc" />
+                </svg>
+
+                <div class="text-xl font-bold text-white">
+                  <span id="val-safety">37.19</span>
+                  <span class="text-xs text-purple-300/70 ml-1">IDX</span>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl border border-purple-400/20 bg-cosmos-950/65 flex flex-col justify-between gap-4 h-full">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="text-purple-200/75">THERMAL FLUX</span>
+                  <span class="text-emerald-300">LIVE_TRACE</span>
+                </div>
+
+                <canvas id="telemetry-wave" width="220" height="86" class="w-full h-[86px] block"></canvas>
+
+                <div class="flex justify-between text-[11px] text-purple-200/75">
+                  <span>GRAVITY</span>
+                  <span id="val-gravity" class="text-cyan-300">0.165408 G</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+              <div class="p-6 rounded-xl border border-purple-400/20 bg-cosmos-950/60 space-y-2">
+                <span class="block text-[11px] text-purple-200/70">CABIN OXYGEN</span>
+                <div class="text-xl font-bold text-cyan-300">
+                  <span id="val-o2">34.18</span><span class="text-xs ml-1">%</span>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl border border-purple-400/20 bg-cosmos-950/60 space-y-2">
+                <span class="block text-[11px] text-purple-200/70">CORE TEMP</span>
+                <div class="text-xl font-bold text-purple-200">
+                  <span id="val-temp">1912.46</span><span class="text-xs ml-1">K</span>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl border border-purple-400/20 bg-cosmos-950/60 space-y-2">
+                <span class="block text-[11px] text-purple-200/70">PRESSURE</span>
+                <div class="text-xl font-bold text-white">
+                  <span id="val-pressure">56.73</span>
+                  <span class="text-xs text-purple-300/75 ml-1">kPa</span>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl border border-purple-400/20 bg-cosmos-950/60 space-y-2">
+                <span class="block text-[11px] text-purple-200/70">CO SENSOR</span>
+                <div class="text-xl font-bold text-white">
+                  <span id="val-co">74.39</span>
+                  <span class="text-xs text-purple-300/75 ml-1">ppm</span>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl border border-purple-400/20 bg-cosmos-950/60 space-y-2">
+                <span class="block text-[11px] text-purple-200/70">AIRFLOW DRIFT</span>
+                <div class="text-xl font-bold text-white">
+                  <span id="val-airflow">6.84</span>
+                  <span class="text-xs text-purple-300/75 ml-1">cm/s</span>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl border border-purple-400/20 bg-cosmos-950/60 space-y-2">
+                <span class="block text-[11px] text-purple-200/70">RADIANT LOSS</span>
+                <div class="text-xl font-bold text-cyan-200">
+                  <span id="val-radiant">68.52</span><span class="text-xs ml-1">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p id="env-telemetry-note" class="pt-6 border-t border-purple-400/20 text-xs text-violet-200/80 leading-loose"></p>
+        </article>
+
+        <!-- Research -->
+        <article id="panel-research" class="terminal-panel rounded-2xl p-8 sm:p-10 flex flex-col gap-8">
+          <span class="corner-tick corner-tick-tl"></span>
+          <span class="corner-tick corner-tick-tr"></span>
+          <span class="corner-tick corner-tick-bl"></span>
+          <span class="corner-tick corner-tick-br"></span>
+          <div class="panel-scan-line"></div>
+
+          <div class="flex flex-wrap items-start justify-between gap-4 border-b border-purple-400/20 pb-6">
+            <div class="space-y-1.5">
+              <span class="block text-[11px] text-purple-300">[SYS_02]</span>
+              <h3 class="font-stardom text-xl text-white">RESEARCH EXPLORER</h3>
+            </div>
+
+            <span id="doc-match-count" class="px-3 py-1.5 rounded border border-purple-400/40 bg-purple-950/45 text-[11px] text-purple-200">
+              6 RECORDS
+            </span>
+          </div>
+
+          <div class="space-y-6">
+            <input
+              id="nasa-search-input"
+              type="search"
+              placeholder="QUERY NASA ARCHIVE (BASS, ACME, FLEX, COOL)..."
+              class="w-full px-5 py-4 rounded-xl bg-cosmos-950/75 border border-purple-400/25 focus:border-purple-300 focus:outline-none text-xs text-white placeholder:text-purple-300/45"
+            />
+
+            <div class="flex flex-wrap gap-3">
+              <button type="button" data-filter="ALL" class="filter-chip px-3.5 py-2 rounded-lg border border-purple-400 bg-purple-500/25 text-[11px] text-white cursor-pointer">ALL</button>
+              <button type="button" data-filter="BASS-II" class="filter-chip px-3.5 py-2 rounded-lg border border-purple-400/25 bg-cosmos-950/60 text-[11px] text-violet-200 cursor-pointer">BASS-II</button>
+              <button type="button" data-filter="ACME" class="filter-chip px-3.5 py-2 rounded-lg border border-purple-400/25 bg-cosmos-950/60 text-[11px] text-violet-200 cursor-pointer">ACME</button>
+              <button type="button" data-filter="FLEX" class="filter-chip px-3.5 py-2 rounded-lg border border-purple-400/25 bg-cosmos-950/60 text-[11px] text-violet-200 cursor-pointer">FLEX</button>
+              <button type="button" data-filter="Saffire" class="filter-chip px-3.5 py-2 rounded-lg border border-purple-400/25 bg-cosmos-950/60 text-[11px] text-violet-200 cursor-pointer">SAFFIRE</button>
+            </div>
+          </div>
+
+          <div id="research-doc-list" class="flex-1 max-h-[520px] overflow-y-auto terminal-scroll space-y-6 pr-2"></div>
+        </article>
+
+        <!-- Assistant -->
+        <article id="panel-assistant" class="terminal-panel rounded-2xl p-8 sm:p-10 flex flex-col justify-between gap-8">
+          <span class="corner-tick corner-tick-tl"></span>
+          <span class="corner-tick corner-tick-tr"></span>
+          <span class="corner-tick corner-tick-bl"></span>
+          <span class="corner-tick corner-tick-br"></span>
+          <div class="panel-scan-line"></div>
+
+          <div class="flex flex-wrap items-start justify-between gap-4 border-b border-purple-400/20 pb-6">
+            <div class="space-y-1.5">
+              <span class="block text-[11px] text-purple-300">[SYS_03]</span>
+              <h3 class="font-stardom text-xl text-white">AI ASSISTANT</h3>
+            </div>
+
+            <span class="px-3 py-1.5 rounded border border-emerald-400/45 bg-emerald-950/35 text-[11px] font-bold text-emerald-300">
+              Receipts Locked
+            </span>
+          </div>
+
+          <div id="chat-log" class="flex-1 max-h-[300px] overflow-y-auto terminal-scroll space-y-6 pr-2"></div>
+
+          <div class="space-y-4">
+            <span class="block text-[11px] text-purple-200/75">SUGGESTED QUESTIONS</span>
+
+            <button
+              type="button"
+              data-question="Why do low-speed cabin fans accelerate microgravity fire?"
+              class="suggested-q-btn w-full text-left p-4 rounded-xl border border-purple-400/20 hover:border-purple-300 bg-cosmos-950/65 text-xs text-violet-100 leading-relaxed transition cursor-pointer"
+            >
+              [Q1] Why do low-speed cabin fans accelerate microgravity fire?
+            </button>
+
+            <button
+              type="button"
+              data-question="How do invisible cool flames cause delayed reignition?"
+              class="suggested-q-btn w-full text-left p-4 rounded-xl border border-purple-400/20 hover:border-purple-300 bg-cosmos-950/65 text-xs text-violet-100 leading-relaxed transition cursor-pointer"
+            >
+              [Q2] How do invisible cool flames cause delayed reignition?
+            </button>
+
+            <button
+              type="button"
+              data-question="Why is 34% or 100% oxygen atmosphere hazardous in habitats?"
+              class="suggested-q-btn w-full text-left p-4 rounded-xl border border-purple-400/20 hover:border-purple-300 bg-cosmos-950/65 text-xs text-violet-100 leading-relaxed transition cursor-pointer"
+            >
+              [Q3] Why is 34% or 100% oxygen atmosphere hazardous in habitats?
+            </button>
+          </div>
+
+          <div class="space-y-4">
+            <form id="chat-form" class="flex gap-4">
+              <input
+                id="chat-input"
+                type="text"
+                placeholder="ASK VERIFIED ARCHIVE..."
+                class="flex-1 px-4 py-3 rounded-xl bg-cosmos-950/75 border border-purple-400/25 focus:border-purple-300 focus:outline-none text-xs text-white placeholder:text-purple-300/45"
+              />
+
+              <button
+                type="submit"
+                class="px-5 py-3 rounded-xl border border-purple-400/50 bg-purple-500/25 hover:bg-purple-500/40 text-xs font-bold text-white transition cursor-pointer"
+              >
+                SEND
+              </button>
+            </form>
+
+            <div class="pt-4 border-t border-purple-400/20 flex items-center justify-between text-[11px]">
+              <span class="text-emerald-300 font-bold">STATUS: Receipts Locked</span>
+              <span class="text-purple-300/70">0% HALLUCINATION RISK</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section id="security-tracker" class="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 pb-28">
+      <div class="terminal-panel rounded-2xl p-8 sm:p-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div class="space-y-3">
+          <span class="block text-xs text-emerald-300">[SECURITY_TRACKER // INTEGRITY VERIFICATION]</span>
+          <h3 class="font-stardom text-xl text-white">STATIC ARCHITECTURE COMPLIANCE</h3>
+
+          <p class="text-xs sm:text-sm text-violet-200/80 leading-loose max-w-2xl">
+            Designed as a resilient "Smoke and Mirrors" frontend training simulator with all NASA combustion datasets
+            embedded locally for uninterrupted live demonstrations.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 shrink-0">
+          <div class="p-6 rounded-xl border border-emerald-400/35 bg-cosmos-950/65 space-y-2">
+            <span class="block text-[11px] text-purple-300/75">ARCHITECTURE</span>
+            <span class="block text-xs sm:text-sm font-bold text-emerald-300">
+              Execution Mode: 100% Static Client-Side
+            </span>
+          </div>
+
+          <div class="p-6 rounded-xl border border-purple-400/40 bg-cosmos-950/65 space-y-2">
+            <span class="block text-[11px] text-purple-300/75">NETWORK STATUS</span>
+            <span class="block text-xs sm:text-sm font-bold text-purple-200">
+              External APIs: None (Zero Downtime)
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Document modal -->
+  <div
+    id="doc-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-6 bg-cosmos-950/85 backdrop-blur-md"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div class="terminal-panel w-full max-w-2xl rounded-2xl p-8 sm:p-10 space-y-6 relative">
+      <span class="corner-tick corner-tick-tl"></span>
+      <span class="corner-tick corner-tick-tr"></span>
+      <span class="corner-tick corner-tick-bl"></span>
+      <span class="corner-tick corner-tick-br"></span>
+
+      <div class="flex items-start justify-between gap-6">
+        <div class="space-y-2">
+          <span id="modal-code" class="inline-block px-3 py-1 rounded border border-purple-400/45 bg-purple-950/50 text-xs text-purple-200"></span>
+          <h4 id="modal-title" class="font-stardom text-xl text-white leading-relaxed"></h4>
+          <p id="modal-meta" class="text-xs text-purple-300/75"></p>
+        </div>
+
+        <button
+          id="modal-close"
+          type="button"
+          class="px-3 py-2 rounded-lg border border-purple-400/35 hover:border-cyan-300 text-xs text-violet-200 hover:text-white cursor-pointer"
+        >
+          [ESC]
+        </button>
+      </div>
+
+      <div class="p-6 rounded-xl border border-purple-400/20 bg-cosmos-950/65 space-y-2">
+        <span class="block text-[11px] text-cyan-300">OFFICIAL NASA ABSTRACT</span>
+        <p id="modal-summary" class="text-xs sm:text-sm text-violet-100 leading-loose"></p>
+      </div>
+
+      <div class="p-6 rounded-xl border border-purple-400/35 bg-cosmos-950/65 space-y-2">
+        <span class="block text-[11px] text-purple-300">CREW SAFETY INSIGHT</span>
+        <p id="modal-takeaway" class="text-xs sm:text-sm text-white leading-loose"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animation libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+</body>
+</html>
