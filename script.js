@@ -27,6 +27,79 @@ if (typeof tailwind !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
+const navbar = document.getElementById('main-navbar');
+
+const mobileToggle = document.getElementById('mobile-menu-toggle');
+
+const navbarLinks = document.getElementById('navbar-links');
+
+const navbarSearch = document.getElementById('navbar-search');
+
+// Navbar background on scroll
+
+function updateNavbar() {
+  if (!navbar) return;
+
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}
+
+window.addEventListener('scroll', updateNavbar, { passive: true });
+
+updateNavbar();
+
+// Mobile menu
+
+if (mobileToggle && navbarLinks) {
+
+  mobileToggle.addEventListener('click', () => {
+
+    const isOpen = navbarLinks.classList.toggle('active');
+
+    mobileToggle.setAttribute('aria-expanded', String(isOpen));
+
+    mobileToggle.textContent = isOpen ? '✕' : '☰';
+
+  });
+
+  // Close menu after clicking a link
+
+  navbarLinks.querySelectorAll('a').forEach(link => {
+
+    link.addEventListener('click', () => {
+
+      navbarLinks.classList.remove('active');
+
+      mobileToggle.setAttribute('aria-expanded', 'false');
+
+      mobileToggle.textContent = '☰';
+
+    });
+
+  });
+
+}
+
+// Search button: focus existing NASA research search
+
+if (navbarSearch) {
+
+  navbarSearch.addEventListener('click', () => {
+
+    const searchInput = document.getElementById('nasa-search-input');
+
+    if (searchInput) {
+      searchInput.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+
+      setTimeout(() => searchInput.focus({ preventScroll: true }), 500);
+    }
+
+  });
+
+}
+
   // -----------------------------------------------------------------------
   // Space video and animated canvas fallback
   // -----------------------------------------------------------------------
@@ -42,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (badge) {
           badge.innerHTML =
-            '<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span><span>ISS EARTH VIDEO // LIVE</span>';
+            '<span class="status-dot"></span><span>LIVE</span>';
         }
       };
 
