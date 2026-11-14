@@ -13,10 +13,6 @@
   />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
 
   <!-- Tailwind must load before script.js -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -50,41 +46,62 @@
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-40 border-b border-purple-400/20 bg-cosmos-950/75 backdrop-blur-xl">
-    <div class="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 py-4 flex flex-wrap items-center justify-between gap-8">
-      <a href="#top-hero" class="flex items-center gap-4 group">
-        <img
-          src="./assets/veltrixa-logo.jpg"
-          alt="VELTRIXA Artemis Lunar Research Systems Logo"
-          class="h-12 sm:h-14 w-auto object-contain logo-screen-blend transition-transform duration-300 group-hover:scale-105"
-        />
+<header id="main-navbar" class="veltrixa-navbar">
+
+  <div class="navbar-container">
+
+    <!-- LEFT: LOGO -->
+    <a href="#top-hero" class="navbar-brand">
+      <img src="assets/veltrixa-logo.png" alt="VELTRIXA Logo" class="navbar-logo">
+    </a>
+
+    <!-- CENTER: NAVIGATION -->
+    <nav id="navbar-links" class="navbar-links">
+
+      <a href="#morph-section">Flame Morph</a>
+
+      <a href="#environment-control">Telemetry</a>
+
+      <a href="#panel-research">Research</a>
+
+      <a href="#panel-assistant">AI Receipts</a>
+
+      <a href="#security-tracker">Security</a>
+
+    </nav>
+
+    <!-- RIGHT: ACTIONS -->
+    <div class="navbar-actions">
+
+      <button id="navbar-search" class="navbar-icon" type="button" aria-label="Search research">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.7" width="19" height="19">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-4-4"></path>
+        </svg>
+      </button>
+
+      <span id="video-feed-badge" class="navbar-status">
+        <span class="status-dot"></span>
+        LIVE
+      </span>
+
+      <a href="#environment-control" class="navbar-cta">
+        Explore Console
+        <span>→</span>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-8 text-xs text-violet-200/80">
-        <a href="#morph-section" class="hover:text-purple-300 transition">01. FLAME MORPH</a>
-        <a href="#environment-control" class="hover:text-purple-300 transition">02. TELEMETRY</a>
-        <a href="#panel-research" class="hover:text-purple-300 transition">03. RESEARCH</a>
-        <a href="#panel-assistant" class="hover:text-purple-300 transition">04. AI RECEIPTS</a>
-        <a href="#security-tracker" class="hover:text-purple-300 transition">05. SECURITY</a>
-      </nav>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle"
+              type="button" aria-label="Toggle navigation"
+              aria-expanded="false" aria-controls="navbar-links">
+        ☰
+      </button>
 
-      <div class="flex items-center gap-4">
-        <span
-          id="video-feed-badge"
-          class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-purple-400/30 bg-purple-950/40 text-[11px] text-purple-200"
-        >
-          <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping"></span>
-          <span>ORBITAL FEED // LIVE</span>
-        </span>
-
-        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-lg border border-emerald-400/40 bg-emerald-950/30 text-xs text-emerald-300">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>READ-ONLY</span>
-        </div>
-      </div>
     </div>
-  </header>
 
+  </div>
+
+</header>
   <main class="relative z-10">
     <!-- Hero -->
     <section id="top-hero" class="max-w-[1580px] mx-auto px-6 sm:px-10 lg:px-14 pt-20 pb-28 lg:pt-28 lg:pb-36">
@@ -135,7 +152,7 @@
 
             <div class="flex flex-col items-center border-b border-purple-400/20 pb-6">
               <img
-                src="./assets/veltrixa-logo.jpg"
+                src="assets/veltrixa-logo.png"
                 alt="VELTRIXA Artemis Lunar Research Systems Crest"
                 class="w-full max-w-[330px] h-auto object-contain logo-screen-blend"
               />

@@ -167,3 +167,321 @@ h4,
   background: rgba(192, 132, 252, 0.35);
   border-radius: 3px;
 }
+
+.veltrixa-navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: rgba(10, 14, 30, 0.12);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition:
+    background 0.35s ease,
+    backdrop-filter 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Navbar when scrolling */
+
+.veltrixa-navbar.scrolled {
+  background: rgba(12, 10, 30, 0.78);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar layout */
+
+.navbar-container {
+  max-width: 1580px;
+  margin: auto;
+
+  padding: 15px 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 35px;
+}
+
+/* Logo */
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.navbar-logo {
+  height: 48px;
+  width: auto;
+
+  object-fit: contain;
+  mix-blend-mode: screen;
+
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.04);
+}
+
+/* Center links */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 32px;
+}
+
+.navbar-links a {
+  position: relative;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: color 0.25s ease;
+}
+
+/* Hover underline */
+
+.navbar-links a::after {
+  content: "";
+
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+
+  width: 0;
+  height: 1px;
+
+  background: #c084fc;
+
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #ffffff;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+/* Right side */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  flex-shrink: 0;
+}
+
+/* Search icon */
+
+.navbar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+
+  color: white;
+  cursor: pointer;
+
+  transition: color 0.25s ease;
+}
+
+.navbar-icon:hover {
+  color: #c084fc;
+}
+
+/* Live badge */
+
+.navbar-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: #6ee7b7;
+
+  box-shadow: 0 0 8px #6ee7b7;
+}
+
+/* Rounded action button */
+
+.navbar-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  padding: 12px 22px;
+
+  border-radius: 50px;
+
+  background: linear-gradient(
+    135deg,
+    #a855f7,
+    #7c3aed
+  );
+
+  color: white;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.25);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.navbar-cta:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 28px rgba(168, 85, 247, 0.45);
+}
+
+/* Mobile menu button */
+
+.mobile-menu-toggle {
+  display: none;
+
+  background: transparent;
+  border: none;
+
+  color: white;
+  font-size: 25px;
+
+  cursor: pointer;
+}
+
+/* Responsive navbar */
+
+@media (max-width: 1150px) {
+
+  .navbar-container {
+    padding: 15px 28px;
+  }
+
+  .navbar-links {
+    gap: 18px;
+  }
+
+  .navbar-actions {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 950px) {
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 25px 30px;
+
+    background: rgba(12, 10, 30, 0.96);
+
+    backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .navbar-container {
+    padding: 12px 18px;
+    gap: 12px;
+  }
+
+  .navbar-logo {
+    height: 38px;
+  }
+
+  .navbar-status,
+  .navbar-icon {
+    display: none;
+  }
+
+  .navbar-actions {
+    gap: 12px;
+  }
+
+  .navbar-cta {
+    padding: 10px 14px;
+    font-size: 10px;
+    gap: 8px;
+  }
+}
+/* Replace JetBrains Mono with Arial */
+
+body,
+button,
+input,
+textarea,
+select,
+nav,
+a,
+p,
+span,
+div {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+/* Fix corner decorations overlapping rounded borders */
+
+.corner-tick {
+    display: none !important;
+}
